@@ -12,25 +12,25 @@ HOST = "0.0.0.0"
 PORT = 5000
 
 CCTV_LIST = {
-    "jl_pasopati": {
-        "nama": "Jl. Pasopati",
-        "url": "https://pelindung.bandung.go.id:3443/video/DAHUA/PASTEUR.m3u8"
+    "jl_ahmad_jazuli": {
+        "nama": "Jl. ahmad jazuli",
+        "url": "https://cctvjss.jogjakota.go.id/kotabaru/ANPR-Jl-Ahmad-Jazuli.stream/chunklist_w827455557.m3u8"
     },
-    "jl_cibaduyut": {
-        "nama": "Jl. Cibaduyut",
-        "url": "https://pelindung.bandung.go.id:3443/video/HIKSVISION/Cibaytps.m3u8"
+    "simpang_terban_view_timur": {
+        "nama": "SIMPANG TERBAN VIEW TIMUR",
+        "url": "https://cctvjss.jogjakota.go.id/atcs/ATCS_Simpang_Terban_View_Timur.stream/chunklist_w2020525505.m3u8"
     },
-    "jl_pasteur": {
-        "nama": "Jl. Pasteur",
-        "url": "https://pelindung.bandung.go.id:3443/video/HIKSVISION/DrDjunjunanBTC.m3u8"
+    "simpang_demangan_view_selatan": {
+        "nama": "SIMPANG DEMANGAN VIEW SELATAN",
+        "url": "https://cctvjss.jogjakota.go.id/atcs/ATCS_Simpang_Demangan_View_Selatan.stream/chunklist_w735060430.m3u8"
     },
-    "jl_ahmad_yani": {
-        "nama": "Jl. Ahmad Yani",
-        "url": "https://pelindung.bandung.go.id:3443/video/HIKSVISION/AhmadYanipertigaanmalabardua.m3u8"
+    "simpang_kiai_mojo": {
+        "nama": "SIMPANG KIAI MOJO",
+        "url": "https://cctvjss.jogjakota.go.id/atcs/ATCS_Lampu_Merah_KyaiMojo.stream/chunklist_w818634083.m3u8"
     },
-    "surapati_gasibu": {
-        "nama": "Surapati - Gasibu",
-        "url": "https://pelindung.bandung.go.id:3443/video/DAHUA/Surat.m3u8"
+    "simpang_mirota": {
+        "nama": "SIMPANG MIROTA",
+        "url": "https://cctvjss.jogjakota.go.id/atcs/ATCS_mirota.stream/chunklist_w1967301974.m3u8"
     },
 }
 
@@ -94,7 +94,7 @@ def proses_cctv(key: str, info: dict):
         if not ret:
             print(f"[!] Stream putus: {nama}, mencoba reconnect...")
             cap.release()
-            time.sleep(3)
+            time.sleep(0.03)
             cap = cv2.VideoCapture(url)
             continue
 
@@ -226,7 +226,7 @@ def generate_stream(key: str):
             # Kirim frame kosong/placeholder jika belum ada data
             time.sleep(0.5)
 
-        time.sleep(0.1)  # 10 fps di stream
+        time.sleep(0.04)  # 10 fps di stream
 
 
 @app.route("/api/stream/<key>")
@@ -282,8 +282,8 @@ if __name__ == "__main__":
     print(f"    GET  /api/traffic             -> data status semua jalan")
     print(f"    GET  /api/traffic/<key>       -> data status 1 jalan")
     print(f"    GET  /api/stream/<key>        -> video live + bounding box")
-    print(f"\n  Contoh key: jl_pasopati, jl_cibaduyut, jl_pasteur,")
-    print(f"              jl_ahmad_yani, surapati_gasibu")
+    print(f"\n  Contoh key: jl_ahmad_jazuli, simpang_terban_view_timur, simpang_demangan_view_selatan,")
+    print(f"              simpang_kiai_mojo, simpang_mirota")
     print("\n[*] Server starting...\n")
 
     # Jalankan Flask (threaded=True agar bisa handle banyak request bersamaan)
