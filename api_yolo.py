@@ -43,9 +43,9 @@ CCTV_LIST = {
         "nama": "SIMPANG KIAI MOJO",
         "url": "https://cctvjss.jogjakota.go.id/atcs/ATCS_Lampu_Merah_KyaiMojo.stream/chunklist_w818634083.m3u8"
     },
-    "simpang_mirota": {
-        "nama": "SIMPANG MIROTA",
-        "url": "https://cctvjss.jogjakota.go.id/atcs/ATCS_mirota.stream/chunklist_w1967301974.m3u8"
+    "simpang_pingit_1": {
+        "nama": "SIMPANG PINGIT 1 - JL.TENTARA PELAJAR",
+        "url": "https://cctvjss.jogjakota.go.id/atcs/ATCS_Lampu_Merah_Pingit1.stream/chunklist_w2067257340.m3u8"
     },
 }
 
